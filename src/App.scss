@@ -1,0 +1,173 @@
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-max: 576px;
+
+// Small tablets (portrait view)
+$screen-md-max: 768px;
+
+// Tablets and small desktops
+$screen-lg-max: 992px;
+
+// Large tablets and desktops
+$screen-xl-max: 1200px;
+
+.App {
+  display: grid;
+  grid-template-areas: 'header header header'
+    'main main main';
+  grid-gap: 10px;
+
+  .top-banner-wrapper {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+    grid-template-rows: 7rem;
+  }
+
+  .section-result-list-loading {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .employee-table-list {
+    grid-area: main;
+
+    .column.asc::after {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 1rem;
+      vertical-align: .2rem;
+      content: "";
+      border-bottom: .3rem solid;
+      border-right: .3rem solid transparent;
+      border-top: 0;
+      border-left: .3rem solid transparent;
+    }
+
+    .column.desc::after {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 1rem;
+      vertical-align: .2rem;
+      content: "";
+      border-top: .3rem solid;
+      border-right: .3rem solid transparent;
+      border-bottom: 0;
+      border-left: .3rem solid transparent;
+    }
+
+    th {
+      &:hover {
+        background-color: #ddffcb;
+      }
+    }
+
+    button {
+      font-weight: 500;
+      width: 100%;
+      text-align: left;
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+  .total-employee-wrapper {
+
+    display: flex;
+    flex-flow: column;
+
+    .total-employee-label {
+      order: 2;
+    }
+
+    .total-employee-result {
+      font-size: 2rem;
+      font-weight: 500;
+      order: 1;
+    }
+
+  }
+
+  .employee-summarry-section {
+    %badge {
+      padding: 0.2rem 1rem;
+      border-radius: 1rem;
+      color: white;
+      font-weight: 500;
+    }
+
+    .lbl-high-earning-employee {
+      @extend %badge;
+      background-color: #43742b;
+      margin-left: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .lbl-high-earning-salary {
+      @extend %badge;
+      background-color: #79d14d;
+    }
+
+    .lbl-most-recent-employee {
+      @extend %badge;
+      background-color: #43742b;
+      margin-left: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .lbl-most-recent-date {
+      @extend %badge;
+      background-color: #79d14d;
+    }
+
+    dt {
+      line-height: 2rem;
+    }
+  }
+
+  //Medium Devices
+  @media screen and (max-width: $screen-lg-max) {
+    .top-banner-wrapper {
+      grid-template-columns: 1fr;
+      grid-gap: 10px;
+      grid-template-rows: 7rem;
+    }
+
+    .employee-summarry-section {
+      dl {
+        margin: 0;
+      }
+    }
+  }
+
+  //Medium Devices
+  @media screen and (max-width: $screen-md-max) {
+    .top-banner-wrapper {
+      grid-template-columns: 1fr;
+      grid-gap: 10px;
+      grid-template-rows: 7rem;
+    }
+
+    .employee-summarry-section {
+
+      .card-body {
+        text-align: center;
+      }
+
+      dl {
+        margin: 0;
+
+        div.d-flex {
+          display: block !important;
+        }
+      }
+
+    }
+  }
+
+}
